@@ -1,0 +1,76 @@
+<div class="app" ng-click="$ctrl.onClick()" ng-hide="$ctrl.showForecast">
+
+  <div class="container" ng-hide="$ctrl.denied || $ctrl.noSearchResult">
+    <div class="centered">
+      <h1 class="use-search">Allow browser to access your location.</h1>
+
+    </div>
+  </div>
+  <div class="container" ng-show="$ctrl.denied && !$ctrl.noSearchResult">
+    <div class="centered">
+      <h1 class="use-search">Well, then you can use a search</h1>
+      <form class="form-inline" ng-submit="$ctrl.search()">
+        <input class="form-control" type="text" placeholder="Search for other place" ng-model="$ctrl.searchValue">
+      </form>
+    </div>
+  </div>
+
+  <div class="container" ng-show="$ctrl.noSearchResult">
+    <div class="centered">
+      <h1 class="use-search">Nothing found!</h1>
+      <form class="form-inline" ng-submit="$ctrl.search()">
+        <input class="form-control" type="text" placeholder="Search for other place" ng-model="$ctrl.searchValue">
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+<!--Navbar-->
+<nav class="navbar navbar-dark navbar-fixed-top scrolling-navbar" ng-hide="$ctrl.noSearchResult">
+
+  <!-- Collapse button-->
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  <div class="container">
+
+    <!--Collapse content-->
+    <div class="collapse navbar-toggleable-xs" id="collapseEx">
+      <!--Search form-->
+      <form class="form-inline" ng-submit="$ctrl.search()">
+        <input class="form-control" type="text" placeholder="Other place" ng-model="$ctrl.searchValue">
+      </form>
+    </div>
+    <!--/.Collapse content-->
+
+  </div>
+
+</nav>
+<!--/.Navbar-->
+
+<div id="carousel-example-1" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false" ng-show="$ctrl.showForecast">
+
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+
+    <!--First slide-->
+    <div class="carousel-item active">
+      <!--Mask-->
+      <div class="view hm-black-light">
+        <div class="full-bg-img flex-center">
+          <ul>
+            <li><h1 class="h1-responsive flex-item animated fadeInUp">{{ $ctrl.countryName }} | {{ $ctrl.placeName }}</h1></li>
+            <li><h3 class="fadeInUp">{{ $ctrl.temperature }}°C</h3></li>
+          </ul>
+
+        </div>
+      </div>
+      <!--/.Mask-->
+    </div>
+    <!--/.First slide-->
+
+  </div>
+</div>
